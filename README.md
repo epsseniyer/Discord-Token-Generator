@@ -18,7 +18,7 @@ GEN LEAK CREADIT TO = AI-Tunable-3.0#5379 | Ai ~Deepak_V7#0001
 
 1. Put your capsmonter.com (or other) key in  data/config.js
 3. Put your Rotating proxies in data/proxies.txt
-4. use py 3.10.8 and 3.10.13
+4. use py 3.9.13
 2. Run start.bat
 
 # Support
