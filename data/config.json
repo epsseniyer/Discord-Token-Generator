@@ -1,0 +1,24 @@
+{
+    "captcha": {
+        "solving_service": "CAPMONSTER",
+        "service_key": "",
+
+        "supported solving services": [
+            "DORT", "CAPSOLVER", "ANTICAPTCHA", "CAPMONSTER"
+        ]
+    },
+    "tokens": {
+        "name_mode": "FILE",
+        "custom_name": "GEN_PATCHED",
+        "prefix_or_suffix": "",
+        "string_length": 16,
+
+        "supported name modes": [
+            "CUSTOM", "PREFIX", "SUFFIX", "EMOJI", "RANDOM", "FILE"
+        ]
+    },
+    "general": {
+        "invite": "r9Yptbeg",
+        "threads": 2
+    }
+}
