@@ -1,5 +1,7 @@
 
 The revive of discord token generators with latest discord patches using tls client
+use capsolver for 90% unlock rate 
+
 # Features
 + Threading
 + Rotating proxies
@@ -9,6 +11,7 @@ The revive of discord token generators with latest discord patches using tls cli
 # Setup
 1. Put your [capsolver.com](https://dashboard.capsolver.com/passport/register?inviteCode=XyZ4QmUN_Itf) and rotating-proxy (or other) key in config.yml
 2. Put your capsolver.com (or other) key in  data/config.js
+3. tast type HCaptchaTurboTask 
 3. Put your Rotating proxies in data/proxies.txt
 4. use py 3.9.13 or 3.10.8  
 5. Run start.bat
