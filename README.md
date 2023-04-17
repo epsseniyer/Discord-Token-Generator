@@ -7,7 +7,7 @@ The revive of discord token generators with latest discord patches using tls cli
 + ~ More soon
 
 # Setup
-1. Put your [capsolver.com](https://dashboard.capsolver.com/passport/register?inviteCode=U9oXjSGF7g_S) and rotating-proxy (or other) key in config.yml
+1. Put your [capsolver.com](https://dashboard.capsolver.com/passport/register?inviteCode=XyZ4QmUN_Itf) and rotating-proxy (or other) key in config.yml
 2. Put your capsolver.com (or other) key in  data/config.js
 3. Put your Rotating proxies in data/proxies.txt
 4. use py 3.9.13 or 3.10.8  
