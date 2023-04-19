@@ -1,4 +1,4 @@
-The revive of discord token generators with latest discord patches using tls client and use capsolver for 90% unlock rate  added new features
+The revive of discord token generators with latest discord patches using tls client and use capsolver for 90% unlock rate and added new features
 
 # Features
 + Unlock token
