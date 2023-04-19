@@ -1,6 +1,6 @@
 {
     "captcha": {
-        "solving_service": "CAPMONSTER",
+        "solving_service": "",
         "service_key": "",
 
         "supported solving services": [
@@ -18,7 +18,7 @@
         ]
     },
     "general": {
-        "invite": "r9Yptbeg",
-        "threads": 2
+        "invite": "pWnWquCY",
+        "threads": 5
     }
 }

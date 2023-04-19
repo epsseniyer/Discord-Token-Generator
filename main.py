@@ -66,7 +66,7 @@ class creator(AbsoluteBase):
         self.username = utils.getUsername()
         pass
 
-
+    
     def start(self) -> None:
         self.session.headers = self.getHeaders()
         self.captchaToken = solver.solveCaptcha(self.logger, self.session)
@@ -74,52 +74,42 @@ class creator(AbsoluteBase):
         self.session.headers["X-Fingerprint"] = self.fingerprint
         self.getCookies()
         self.register()
-        
-        
 
-    def register(self) -> None:
-        fingerprint2="1093149476996268125.gGH5Y_R5FCQvVSWMI8dNcDme7lU"
-        email = "{}@outlook.be".format(''.join(random.choice(string.ascii_lowercase) for _ in range(7)))
+    def register(self):
         body = {
             "fingerprint":  self.fingerprint,
             "username": self.username,
             "invite": self.invite,
             "consent": True,
-            "date_of_birth": f"{random.randint(1980, 2000)}-0{random.randint(1, 9)}-{random.randint(10, 28)}",
             "gift_code_sku_id": None,
-            #'bio': "deepakkuimad",
             "captcha_key": self.captchaToken
         }
-        
-        
+
         headers = {
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Connection": "keep-alive",
-            "Content-Type": "application/json",
-            "Host": "discord.com",
-            "Origin": "https://discord.com",
-            "Referer": "https://discord.com/register",
-            "Sec-ch-ua": '"Chromium";v="111", "Not A(Brand";v="24", "Google Chrome";v="111"',
-            "Sec-ch-ua-mobile": "?0",
-            "Sec-ch-ua-platform": "\"Windows\"",
-            "Sec-Fetch-Dest": "empty",
-            "Sec-Fetch-Mode": "cors",
-            "cookie": "",
-            "x-fingerprint": self.fingerprint,
-            "Sec-Fetch-Site": "same-origin",
-            "User-Agent": self.userAgent,
-            "X-Super-Properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzExMS4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTExLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyIsInJlZmVycmluZ19kb21haW4iOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJyZWZlcnJlcl9jdXJyZW50IjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJyZWZlcnJpbmdfZG9tYWluX2N1cnJlbnQiOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmVfY3VycmVudCI6Imdvb2dsZSIsInJlbGVhc2VfY2hhbm5lbCI6InN0YWJsZSIsImNsaWVudF9idWlsZF9udW1iZXIiOjE4NTgzMiwiY2xpZW50X2V2ZW50X3NvdXJjZSI6bnVsbH0=",
-            "X-Discord-Locale": "jp" }
-        resp = self.post("https://discord.com/api/v10/auth/register",json=body,headers=headers)
+            "accept": "*/*",
+	        "accept-encoding": "gzip, deflate, br",
+	        "accept-language": "en-US,en;q=0.9",
+	        "content-type": "application/json",
+	        "cookie": self.getCookies(),
+	        "origin": "https",
+	        "referer": "https",
+            "Sec-ch-ua": '"Chromium";v="112", "Not A(Brand";v="24", "Google Chrome";v="112"',
+	        "sec-ch-ua-mobile": "?0",
+	        "Sec-ch-ua-platform": "\"Windows\"",
+	        "sec-fetch-dest": "empty",
+	        "sec-fetch-mode": "cors",
+	        "sec-fetch-site": "same-origin",
+	        "user-agent": self.userAgent,
+	        "x-debug-options": "bugReporterEnabled",
+	        "x-discord-locale": "en-US",
+	        "x-fingerprint": self.fingerprint,
+	        "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzExMi4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTEyLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyIsInJlZmVycmluZ19kb21haW4iOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJyZWZlcnJlcl9jdXJyZW50IjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJyZWZlcnJpbmdfZG9tYWluX2N1cnJlbnQiOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmVfY3VycmVudCI6Imdvb2dsZSIsInJlbGVhc2VfY2hhbm5lbCI6InN0YWJsZSIsImNsaWVudF9idWlsZF9udW1iZXIiOjE5MDE4NywiY2xpZW50X2V2ZW50X3NvdXJjZSI6bnVsbH0=",
+}
+        resp = self.post("https://discord.com/api/v9/auth/register",json=body,headers=headers)
         body = {
                 "consent": "true",
                 "fingerprint": self.fingerprint,
-                #"email":email,
-                #"password":"DeepakGENONTOP@@342@",
-                "bio":"deepak",
+                "invite": self.invite,
                 "username": self.username,
                 "captcha_key": self.captchaToken
             }
@@ -128,7 +118,6 @@ class creator(AbsoluteBase):
             self.logger.valid(title="CREATED", data=f"{self.token}")
             with open("output/tokens.txt", "a") as f:
                 f.write(f"{self.token}\n")
-                #connectToWebsocket(self.token)
                 f.close()
             threading.Thread(target=connectToWebsocket(self.token),args=(self.token,)).start()
             self.session.headers["authorization"] = self.token
@@ -141,25 +130,25 @@ class creator(AbsoluteBase):
             
     def getHeaders(self) -> dict:
         headers = {
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Connection": "keep-alive",
-            "Content-Type": "application/json",
-            "Host": "discord.com",
-            "Origin": "https://discord.com",
-            "Referer": "https://discord.com/register",
-            "Sec-ch-ua": '"Chromium";v="111", "Not A(Brand";v="24", "Google Chrome";v="111"',
-            "Sec-ch-ua-mobile": "?0",
-            "Sec-ch-ua-platform": "\"Windows\"",
-            "Sec-Fetch-Dest": "empty",
-            "Sec-Fetch-Mode": "cors",
-            "cookie": "",
-            "Sec-Fetch-Site": "same-origin",
-            "User-Agent": self.userAgent,
-            "X-Discord-Locale": "jp",
-            "X-Super-Properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzExMS4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTExLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyIsInJlZmVycmluZ19kb21haW4iOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJyZWZlcnJlcl9jdXJyZW50IjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJyZWZlcnJpbmdfZG9tYWluX2N1cnJlbnQiOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmVfY3VycmVudCI6Imdvb2dsZSIsInJlbGVhc2VfY2hhbm5lbCI6InN0YWJsZSIsImNsaWVudF9idWlsZF9udW1iZXIiOjE4NTgzMiwiY2xpZW50X2V2ZW50X3NvdXJjZSI6bnVsbH0=",
-        }
+	        "accept": "*/*",
+	        "accept-encoding": "gzip, deflate, br",
+	        "accept-language": "en-US,en;q=0.9",
+	        "content-type": "application/json",
+	        "origin": "https",
+	        "referer": "https",
+            "cookie": self.getCookies(),
+            "Sec-ch-ua": '"Chromium";v="112", "Not A(Brand";v="24", "Google Chrome";v="112"',
+	        "sec-ch-ua-mobile": "?0",
+	        "Sec-ch-ua-platform": "\"Windows\"",
+	        "sec-fetch-dest": "empty",
+	        "sec-fetch-mode": "cors",
+	        "sec-fetch-site": "same-origin",
+	        "user-agent": self.userAgent,
+            #"x-fingerprint": self.fingerprint,
+	        "x-debug-options": "bugReporterEnabled",
+	        "x-discord-locale": "en-US",
+	        "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzExMi4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTEyLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyIsInJlZmVycmluZ19kb21haW4iOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJyZWZlcnJlcl9jdXJyZW50IjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJyZWZlcnJpbmdfZG9tYWluX2N1cnJlbnQiOiJ3d3cuZ29vZ2xlLmNvbSIsInNlYXJjaF9lbmdpbmVfY3VycmVudCI6Imdvb2dsZSIsInJlbGVhc2VfY2hhbm5lbCI6InN0YWJsZSIsImNsaWVudF9idWlsZF9udW1iZXIiOjE5MDE4NywiY2xpZW50X2V2ZW50X3NvdXJjZSI6bnVsbH0=",
+}
         return headers
 
         

@@ -28,7 +28,7 @@ class solver():
         ).solve()
     
     def solveGeneric(publicKey: str, siteUrl: str, logger: charlogger.Logger, session: requests.Session, domain: str = "https://api.capsolver.com") -> str:
-        taskType = "HCaptchaTask" if "capsolver" in domain else "HCaptchaTurboTaskProxyLess"
+        taskType = "HCaptchaTurboTask" if "capsolver" in domain else "HCaptchaTurboTask"
         data1 = {
             "clientKey": key,
             "appId": "5C4B67D5-D8E9-485D-AF57-4F427464F0CF",
@@ -36,9 +36,11 @@ class solver():
                 "type": taskType,
                 "websiteURL": siteUrl,
                 "websiteKey": publicKey,
-                #"proxyType": "http",
+                "proxyType": "http",
+                #"proxyAddress":"8.8.8.8",
+                #"proxyPort":8080,
                 "userAgent": session.headers.get("User-Agent"),
-                "enableIPV6": True,
+                #"enableIPV6": True,
                 "proxy": solver.getProxyFromSession(session)
             }
         }
