@@ -16,5 +16,5 @@ The revive of discord token generators with latest discord patches using tls cli
 5. Run start.bat
 
 # Support
-+ My discord: Deepak2432#5986
++ My discord: Deepak_12#5986/1092820503980412989
 
